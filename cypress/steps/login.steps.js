@@ -6,7 +6,8 @@ import productPage from "../pages/product.page";
 
 
 Given("je suis sur la page {string}", (s) => {
-    cy.visit(s);
+        cy.visit(s);
+    
 
 })
 
