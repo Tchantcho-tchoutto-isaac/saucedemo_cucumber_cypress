@@ -4,7 +4,7 @@ Feature: Login to SauceDemo
         Given je suis sur la page "https://www.saucedemo.com/"
 
     @valid_credentials
-    Scenario: Login avec username valide et password invalide
+    Scenario: Login avec username valide et password valide
     When je saisis le username "standard_user"
     And je saisis le password "secret_sauce"
     And je clique sur le bouton Login
