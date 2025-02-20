@@ -2,7 +2,7 @@
 
 import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 import loginPage from "../pages/login.page";
-import productPage from "../pages/product.page";
+import productPage from "../pages/products.page";
 
 
 Given("je suis sur la page {string}", (s) => {
