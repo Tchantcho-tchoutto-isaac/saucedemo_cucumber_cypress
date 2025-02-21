@@ -1,6 +1,7 @@
 class ProductsPage {
     elements = {
       productTitle: () => cy.get(".inventory_item_name"),
+      productPrice: () => cy.get(".inventory_item_price"),
       addToCartButton: () => cy.get(".btn_inventory"),
       cartNumbre: () => cy.get(".shopping_cart_badge"),
       cartIcon: () => cy.get(".shopping_cart_link"),
@@ -11,11 +12,9 @@ class ProductsPage {
 
   cliquerSurProduit(nomProduit) {
     this.elements.productTitle().contains(nomProduit).click();
-    
-
   }
 
-   ajouterProduitAuPanier(nomProduit) {
+  ajouterProduitAuPanier(nomProduit) {
     this.elements.ajouterAuPanierBouton(nomProduit).click();
   }
  
@@ -38,6 +37,8 @@ class ProductsPage {
   verifierTriSelectionne(valeur) {
     this.elements.sortDropdown().should("have.value", valeur);
   }
+  
 }
+
 
 export default new ProductsPage();

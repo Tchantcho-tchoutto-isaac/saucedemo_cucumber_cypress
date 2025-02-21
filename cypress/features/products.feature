@@ -8,15 +8,26 @@ Feature: Produits
     And je clique sur le bouton "login-button"
     Then je suis redirigé au dashbord
     Then je verifie la liste des produits
-# @Tri
-#    Scenario: Verification du tri des produits par nom
-#     Given je suis sur "https://www.saucedemo.com/"
-#     When je saisis le username "standard_user"
-#     And je saisi le password "secret_sauce"
-#     And je clique sur le bouton "login-button"
-#     Then je suis redirigé au dashbord
-#     When je trie les produits par nom
-#     Then je vérifie que les produits sont triés par nom
+
+    @Tri
+  Scenario: Verification du tri des produits par nom
+    Given je suis sur "https://www.saucedemo.com/"
+    When j-e saisis le username "standard_user"
+    And je saisi le password "secret_sauce"
+    And je clique sur le bouton "login-button"
+    Then je suis redirigé au dashbord
+    When je trie les produits par nom
+    Then je vérifie que les produits sont triés par nom
+
+     @Tri
+  Scenario: Verification du tri des produits par prix (bas à haut)
+    Given je suis sur "https://www.saucedemo.com/"
+    When j-e saisis le username "standard_user"
+    And je saisi le password "secret_sauce"
+    And je clique sur le bouton "login-button"
+    Then je suis redirigé au dashbord
+    When je trie les produits par prix
+    Then je vérifie que les produits sont triés par prix
 
 # @AddToCart
 #   Scenario: Ajout d'un produit au panier

@@ -17,9 +17,34 @@ When('je clique sur le bouton {string}', function (buttonId) {
 });
 
 Then('je suis redirigé au dashbord', function () {
-  cy.url().should('include', '/inventory.html'); // Vérifie que l'URL contient le bon path
+  cy.url().should('include', '/inventory.html'); 
 });
 
 Then('je verifie la liste des produits', function () {
   ProductsPage.elements.productTitle().should('have.length.greaterThan', 0);
 });
+
+//Tri par nom AZ
+When('je trie les produits par nom', function () {
+  ProductsPage.selectionnerTriPar('az'); 
+});
+
+Then('je vérifie que les produits sont triés par nom', function () {
+  ProductsPage.elements.productTitle().then(($products) => {
+    const productNames = $products.toArray().map((el) => el.innerText);
+    const sortedProductNames = [...productNames].sort((a, b) => a.localeCompare(b));
+    expect(productNames).to.deep.equal(sortedProductNames);
+  });
+});
+
+//Tri par prix bas-haut
+When('je trie les produits par prix', () => {
+  ProductsPage.selectionnerTriPar('lohi');
+});
+
+Then('je vérifie que les produits sont triés par prix', () => {
+  ProductsPage.elements.productPrice().then(($prices) => {
+    const productPrices = $prices.toArray().map((el) => parseFloat(el.innerText.replace('$', '')));
+    const sortedProductPrices = [...productPrices].sort((a, b) => a - b);
+    expect(productPrices).to.deep.equal(sortedProductPrices);
+  });})
