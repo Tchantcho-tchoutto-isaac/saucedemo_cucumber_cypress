@@ -1,4 +1,4 @@
-import ProductsPage from '../pages/product.page';
+import ProductsPage from '../pages/products.page';
 import {Given, When, Then} from "cypress-cucumber-preprocessor/steps";
 
 Given('je suis sur {string}', function (url) {
