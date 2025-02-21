@@ -5,10 +5,7 @@ class CheckoutInformationPage {
         lastNameInput: ()=> cy.get("[data-test='lastName']"),
         postalCodeInput: ()=> cy.get("[data-test='postalCode']"),
         continueButton: ()=> cy.get("[data-test='continue']")
-
-  
     }
-
 
     enterFirstName(firstName) {
         this.elements.firstNameInput().clear().type(firstName)
