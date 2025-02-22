@@ -26,9 +26,12 @@ class ProductsPage {
   }
 
   verifierProduitAjoute() {
-    this.elements.cartNumber().should("be.visible");
+    this.elements.cartNumbre().should("be.visible");
   }
-
+ // Vérifier que le produit est supprimé du panier
+ verifierProduitSupprime() {
+  this.elements.cartNumbre().should("not.exist");
+}
   allerAuPanier() {
     this.elements.cartIcon().click();
   }
@@ -40,23 +43,15 @@ class ProductsPage {
   verifierTriSelectionne(valeur) {
     this.elements.sortDropdown().should("have.value", valeur);
   }
-  
-
-
   selectRandomProduct() {
     return this.elements.productItems().then((products) => {
       const randomIndex = Math.floor(Math.random() * products.length);
       return cy.wrap(products[randomIndex]);
     });
   }
-  cliquerSurProduit(nomProduit) {
-    this.elements.productTitle().contains(nomProduit).click();
-  }
-
-  recupererNomProduit(product) {
+   recupererNomProduit(product) {
     return cy.wrap(product).find(".inventory_item_name").invoke('text').then(text => text.trim());
   }
-
   verifierDetailProduit(nomProduit) {
     this.elements.productDetailTitle().should('be.visible').and('have.text', nomProduit);
   }
