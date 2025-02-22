@@ -1,5 +1,6 @@
 import ProductsPage from '../pages/products.page';
 import {Given, When, Then} from "cypress-cucumber-preprocessor/steps";
+let selectedProduct;
 
 Given('je suis sur {string}', function (url) {
   cy.visit(url);
@@ -47,4 +48,34 @@ Then('je vérifie que les produits sont triés par prix', () => {
     const productPrices = $prices.toArray().map((el) => parseFloat(el.innerText.replace('$', '')));
     const sortedProductPrices = [...productPrices].sort((a, b) => a - b);
     expect(productPrices).to.deep.equal(sortedProductPrices);
+  });
+});
+
+//Addtocart
+When('je clique sur {string}', (s) => {
+  ProductsPage.selectRandomProduct().then((randomProduct) => {
+    selectedProduct = randomProduct; // Stocker le produit sélectionné
+      ProductsPage.recupererNomProduit(randomProduct).then((nomProduit) => {
+      // Formater le nom du produit pour correspondre à l'attribut data-test
+      const nomProduitFormate = nomProduit.toLowerCase().replace(/\s+/g, '-');
+      ProductsPage.ajouterProduitAuPanier(nomProduitFormate);
+    });
+  });
+});
+
+//SupprimerProduit 
+Then('le produit est ajouté au panier', () => {
+  ProductsPage.verifierProduitAjoute();
+})
+
+When('je supprime le produit', () => {
+  ProductsPage.selectRandomProduct().then((randomProduct) => {
+    ProductsPage.recupererNomProduit(selectedProduct).then((nomProduit) => {
+      const nomProduitFormate = nomProduit.toLowerCase().replace(/\s+/g, '-');
+      ProductsPage.retirerProduitDuPanier(nomProduitFormate);
+    });
   });})
+
+Then('le produit est bien supprimé du panier', () => {
+  ProductsPage.verifierProduitSupprime();
+})
