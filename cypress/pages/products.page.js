@@ -1,5 +1,7 @@
 class ProductsPage {
     elements = {
+      
+      productPrice: () => cy.get(".inventory_item_price"),
       productItems: () => cy.get(".inventory_item"),
       productTitle: () => cy.get(".inventory_item_name"),
       addToCartButton: () => cy.get(".btn_inventory"),
@@ -13,10 +15,7 @@ class ProductsPage {
 
   cliquerSurProduit(nomProduit) {
     this.elements.productTitle().contains(nomProduit).click();
-    
-
   }
-
 
    ajouterProduitAuPanier(nomProduit) {
     this.elements.ajouterAuPanierBouton(nomProduit).click();
@@ -41,6 +40,8 @@ class ProductsPage {
   verifierTriSelectionne(valeur) {
     this.elements.sortDropdown().should("have.value", valeur);
   }
+  
+
 
   selectRandomProduct() {
     return this.elements.productItems().then((products) => {
@@ -60,5 +61,6 @@ class ProductsPage {
     this.elements.productDetailTitle().should('be.visible').and('have.text', nomProduit);
   }
 }
+
 
 export default new ProductsPage();
