@@ -10,7 +10,6 @@ class cartPage {
   clickContinueButton(){
    this.elements.continueButton().click();
   }
-
   clickqueCartbutton(){
        this.elements.checkoutButton().click();
   }
@@ -21,14 +20,9 @@ class cartPage {
   clickRemoveButton(){
     this.elements.removeButton().click();
   }
-
-
   getBadgeElement() {
     return this.elements.badgeButton();
-}
-    
-
-  
+} 
 }
 export default new cartPage(); 
 

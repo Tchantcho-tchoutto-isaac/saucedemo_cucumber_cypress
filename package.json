@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
     "cucumber": "^6.0.7",
     "cypress": "^13.17.0",
     "cypress-cucumber-attach-screenshots-to-failed-steps": "^1.0.0",
