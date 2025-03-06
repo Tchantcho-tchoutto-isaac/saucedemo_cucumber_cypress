@@ -12,6 +12,10 @@ class ChekoutCompletePage{
         cy.elements.backButton().click();
 
     }
+    
+    getOrderConfirmationMessage() {
+        return cy.contains("Thank you for your order"); // ✅ Retourne l'élément mais ne vérifie pas
+      }
 }
 
 export default new ChekoutCompletePage;
