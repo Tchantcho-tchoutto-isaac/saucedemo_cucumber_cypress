@@ -1,12 +1,13 @@
 /// <reference types="cypress" />
 
 import { When, Then } from "cypress-cucumber-preprocessor/steps";
+import productsPage from '../pages/products.page';
 
 When('jajoute des produits', () => {
   // Write code here that turns the phrase above into concrete actions
   let nombreProduits = 4
   let listeProduits =[]
-        productPage.elements.productTitle().each((produit, id)=>{
+        productPages.elements.productTitle().each((produit, id)=>{
             if(id < nombreProduits){
                 cy.wrap(produit).invoke("text").then((produitTexte) => {
                     productPage.ajouterProduitAuPanier(produitTexte.toLowerCase().replace(/\s+/g, "-"));
