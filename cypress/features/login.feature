@@ -1,4 +1,4 @@
-@Login
+@smoke
 Feature: Login to SauceDemo 
     Background:
         Given je suis sur la page "https://www.saucedemo.com/"
